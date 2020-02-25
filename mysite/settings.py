@@ -25,7 +25,10 @@ SECRET_KEY = '+fg&q$lfy-(_f3yt^pm%%z(#eq(hbcidh)*hys40tvpyhm$*bs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    '192.168.56.102'
+    ]
 
 
 # Application definition
@@ -137,7 +140,8 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'e:\django.log',
+            #'filename': 'e:\django.log',
+            'filename': "$HOME/python/django-study/django.log",
         },
     },
     'loggers': {
