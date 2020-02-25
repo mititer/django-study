@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
-    #'dashboard.apps.DashboardConfig',
+    'frontend.apps.FrontendConfig',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN' # only if django version >= 3.0
 
@@ -141,8 +141,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-import os
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 LOGGING = {
     'version': 1,
@@ -151,7 +153,6 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            #'filename': 'e:\django.log',
             'filename': "django.log",
         },
     },
