@@ -1,5 +1,6 @@
 from django.contrib import admin
 from polls.models import Question, Choice
+from django.utils.translation import gettext_lazy as _
 
 # Register your models here.
 # admin.site.register(Question)
@@ -12,5 +13,9 @@ class QuestionAdmin(admin.ModelAdmin):
     actions_on_bottom = True
     list_filter = ['question_txt', 'pub_date']
     search_fields = ['question_txt', 'pub_date']
+
+    class Meta:
+        verbose_name = _('question')
+        verbose_name_plural = verbose_name
 
 admin.site.register(Question, QuestionAdmin)
