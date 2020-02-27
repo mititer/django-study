@@ -34,12 +34,9 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    # jet dashboard
-    #'jet.dashboard',
-    # django-jet app
-    #'jet',
-    'admin_interface',
-    'colorfield',
+    #'adminlteui',
+    #'admin_interface',
+    #'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,10 +45,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'frontend.apps.FrontendConfig',
+    # adminlteui custom menu base on treebeard
+    #'treebeard',
+    #'pinax.models',
+    'company.apps.CompanyConfig',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN' # only if django version >= 3.0
 
 MIDDLEWARE = [
+    # 多语言支持
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,21 +89,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #}
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodb',
-        'USER': 'djangodb',
-        'PASSWORD': 'djangodb',
-        'HOST': '127.0.0.1',
-        'PORT': 3306,
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'djangodb',
+    #     'USER': 'djangodb',
+    #     'PASSWORD': 'djangodb',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': 3306,
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     }
+    # }
 }
 
 
@@ -126,7 +129,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
+# 多语言
+# LANGUAGES = (
+#     ('zh-hans', '简体中文'),
+#     ('en-us', 'English'),
+# )
+# LOCALE_PATH = (
+#     os.path.join(BASE_DIR, 'locale'),
+# )
 
 TIME_ZONE = 'Asia/Shanghai'
 
