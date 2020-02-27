@@ -8,9 +8,9 @@ django-admin-interface==0.12.1
 django-colorfield==0.2.1
 django-flat-responsive==2.0
 django-flat-theme==1.1.4
-six==1.14.0
+#six==1.14.0
 # adminlte-ui
-django-treebeard==4.3
-django-adminlte-ui==1.5.0
+#django-treebeard==4.3
+#django-adminlte-ui==1.5.0
 # mysqlclient
-#mysqlclient==1.4.6
+mysqlclient==1.4.6

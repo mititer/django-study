@@ -1,10 +1,11 @@
 from django.db import models
-from django.contrib.admin import ModelAdmin
 from django.utils import timezone
 import datetime
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+
 class Member(models.Model):
     first_name = models.CharField(verbose_name=_('first name'), max_length=30)
     last_name = models.CharField(verbose_name=_('last name'), max_length=30)
@@ -22,10 +23,15 @@ class Member(models.Model):
         verbose_name = _('member')
         verbose_name_plural = verbose_name
 
+
 class Question(models.Model):
     question_text = models.CharField(verbose_name=_('question'), max_length=200)
     pub_date = models.DateTimeField(verbose_name=_('published date'))
     parent = models.ForeignKey('self', verbose_name=_('parent question'), on_delete=models.NOT_PROVIDED, null=True, blank=True)
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     def __str__(self):
         return self.question_text
@@ -38,6 +44,7 @@ class Question(models.Model):
     class Meta:
         verbose_name = _('question')
         verbose_name_plural = verbose_name
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, verbose_name='调研问题', on_delete=models.CASCADE)
