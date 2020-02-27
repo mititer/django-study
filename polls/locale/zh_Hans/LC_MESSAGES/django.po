@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-27 07:54+0800\n"
+"POT-Creation-Date: 2020-02-27 14:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: polls/models.py:10 polls/models.py:22
+#: .\polls\models.py:9
+msgid "first name"
+msgstr ""
+
+#: .\polls\models.py:10
+msgid "last name"
+msgstr ""
+
+#: .\polls\models.py:11
+msgid "mobile"
+msgstr ""
+
+#: .\polls\models.py:12
+msgid "active"
+msgstr "激活"
+
+#: .\polls\models.py:13
+msgid "sex"
+msgstr "性别"
+
+#: .\polls\models.py:14
+msgid "recommender"
+msgstr "推荐人"
+
+#: .\polls\models.py:15
+msgid "create time"
+msgstr "创建时间"
+
+#: .\polls\models.py:16
+msgid "update time"
+msgstr "更新时间"
+
+#: .\polls\models.py:22
+msgid "member"
+msgstr "会员"
+
+#: .\polls\models.py:26 .\polls\models.py:39
 msgid "question"
 msgstr "问题"
 
-#: polls/models.py:11
+#: .\polls\models.py:27
 msgid "published date"
 msgstr "发布时间"
 
-#: polls/models.py:12
-#| msgid "question"
+#: .\polls\models.py:28
 msgid "parent question"
 msgstr "上级问题"
 

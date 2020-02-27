@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='question',
-            name='question_txt',
+            name='question_text',
             field=models.CharField(max_length=200, verbose_name='question'),
         ),
     ]
