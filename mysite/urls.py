@@ -20,9 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('frontend.urls')),
     path('polls/', include('polls.urls')),
-    path('company/', include('company.urls')),
-    #path('dashboard/', include('dashboard.urls')),
-    #url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
-    #url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
 ]

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     # adminlteui custom menu base on treebeard
     #'treebeard',
     #'pinax.models',
-    'company.apps.CompanyConfig',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN' # only if django version >= 3.0
 
@@ -89,21 +88,22 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'djangodb',
-    #     'USER': 'djangodb',
-    #     'PASSWORD': 'djangodb',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': 3306,
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     }
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodb',
+        'USER': 'djangodb',
+        'PASSWORD': 'djangodb',
+        # 'HOST': '127.0.0.1',
+        'HOST': '192.168.56.102',
+        'PORT': 3306,
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
 }
 
 
