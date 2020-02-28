@@ -10,28 +10,28 @@ from django.urls import reverse
 class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_future_question(self):
-        '''
+        """
         was_published_recently() 对于未来的pub_date时间应该返回False
         :return: False
-        '''
+        """
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Question(pub_date=time)
         self.assertIs(future_question.was_published_recently(), False)
 
     def test_was_published_recently_with_old_question(self):
-        '''
+        """
         如果pub_date早于1天，则应该返回False
         :return: False
-        '''
+        """
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
         self.assertIs(old_question.was_published_recently(), False)
 
     def test_was_published_recently_with_recent_question(self):
-        '''
+        """
         如果pub_date在1天以内返回True
         :return: True
-        '''
+        """
         time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
@@ -47,30 +47,30 @@ def create_question(question_text, days):
 
 class QuestionIndexViewTests(TestCase):
     def test_no_questions(self):
-        '''
+        """
         如果没有问题存在，则提示对应的消息
         :return:
-        '''
+        """
         response = self.client.get(reverse('polls:index'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "No polls are available")
         self.assertQuerysetEqual(response.context['latest_question_list'], [])
 
     def test_past_question(self):
-        '''
+        """
         过去的问题显示出来
         :param self:
         :return:
-        '''
+        """
         create_question(question_text="Past question.", days=-30)
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(response.context['latest_question_list'], ['<Question: Past question.>'])
 
     def test_future_question(self):
-        '''
+        """
         未来发布的时间不显示
         :return:
-        '''
+        """
         create_question(question_text='Future question.', days=30)
         response = self.client.get(reverse('polls:index'))
         self.assertContains(response, "No polls are available.")

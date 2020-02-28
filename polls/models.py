@@ -5,16 +5,22 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+class MemberType(models.Model):
+    name = models.CharField(verbose_name=_('member type name'), max_length=20)
+    create_at = models.DateTimeField(verbose_name=_('create time'), auto_created=True, auto_now_add=True, auto_now=False)
+    update_at = models.DateTimeField(verbose_name=_('update time'), auto_created=True, auto_now_add=False, auto_now=True)
 
 class Member(models.Model):
+    name = models.CharField(verbose_name=_('name'), max_length=60, default="")
+    name2 = models.CharField(verbose_name=_('name'), max_length=60, default="")
     first_name = models.CharField(verbose_name=_('first name'), max_length=30)
     last_name = models.CharField(verbose_name=_('last name'), max_length=30)
     mobile = models.CharField(verbose_name=_('mobile'), max_length=11)
     active = models.IntegerField(verbose_name=_('active'))
     sex = models.CharField(verbose_name=_('sex'), max_length=2)
     recommender = models.IntegerField(verbose_name=_('recommender'))
-    create_at = models.DateTimeField(verbose_name=_('create time'), auto_created=True, auto_now=False)
-    update_at = models.DateTimeField(verbose_name=_('update time'), auto_created=False, auto_now=True)
+    create_at = models.DateTimeField(verbose_name=_('create time'), auto_now_add=True, auto_now=False)
+    update_at = models.DateTimeField(verbose_name=_('update time'), auto_now_add=False, auto_now=True)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
