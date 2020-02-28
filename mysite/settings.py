@@ -53,7 +53,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN' # only if django version >= 3.0
 
 MIDDLEWARE = [
     # 多语言支持
-    'django.middleware.locale.LocaleMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,8 +102,21 @@ DATABASES = {
         'PORT': 3306,
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        },
+    },
+    'redmine4': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'redmine4_mitit',
+        'USER': 'redmine4_mitit',
+        'PASSWORD': 'redmine4_mitit',
+        # 'HOST': '127.0.0.1',
+        'HOST': '192.168.56.102',
+        'PORT': 3306,
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
+
 }
 
 
@@ -132,10 +145,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-hans'
 # 多语言
-# LANGUAGES = (
-#     ('zh-hans', '简体中文'),
-#     ('en-us', 'English'),
-# )
+LANGUAGES = (
+    ('zh-hans', '简体中文'),
+    ('en-us', 'English'),
+)
 # LOCALE_PATH = (
 #     os.path.join(BASE_DIR, 'locale'),
 # )
